@@ -40,6 +40,7 @@ export const Icons = styled.span`
 
 export const Icon = styled.span`
   margin: 0 6px;
+  cursor: pointer;
 `;
 
 export const Line = styled.hr`

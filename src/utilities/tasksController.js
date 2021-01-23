@@ -3,54 +3,64 @@ import axios from "axios";
 class TasksController {
   constructor() {
     this.client = axios.create({
-      baseURL: process.env.BASE_URL,
+      baseURL: process.env.REACT_APP_BASE_URL,
     });
   }
 
   dashboard = async (token) => {
-    const response = await this.client.get(`/dashboard`, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/dashboard`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      return { data };
+    } catch (err) {
+      return { err: err.response };
+    }
   };
 
-  allTasks = async (token) => {
-    const response = await this.client.get(`/tasks`, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
+  addTask = async (task, token) => {
+    try {
+      const { data } = await this.client.post(`/tasks`, task, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      return { data };
+    } catch (err) {
+      return { err: err.response };
+    }
   };
 
-  addTask = async (data, token) => {
-    const response = await this.client.post(`/tasks`, data, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
-  };
-
-  editTask = async (taskId, token) => {
-    const response = await this.client.put(`/tasks/${taskId}`, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
+  editTask = async (taskId, task, token) => {
+    try {
+      const { data } = await this.client.put(`/tasks/${taskId}`, task, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      return { data };
+    } catch (err) {
+      return { err: err.response };
+    }
   };
 
   deleteTask = async (taskId, token) => {
-    const response = await this.client.delete(`/tasks/${taskId}`, {
-      headers: {
-        Authorization: token,
-      },
-    });
-    return response;
+    try {
+      const { data } = await this.client.delete(`/tasks/${taskId}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      return { data };
+    } catch (err) {
+      return { err: err.response };
+    }
   };
 }
 
-export default TasksController;
+export default new TasksController(process.env.REACT_APP_BASE_URL);

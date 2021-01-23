@@ -2,26 +2,55 @@ import React from "react";
 import { Edit, Delete } from "../../../constants/icons";
 import { Task, TaskWrapper, Checkbox, Icon, Icons, Line } from "./styles";
 
-const TasksList = ({ setAddorEdit }) => {
+const TasksList = ({
+  setAddorEdit,
+  tasks,
+  deleteTask,
+  markReadUnRead,
+  searchText,
+}) => {
   return (
     <>
-      <TaskWrapper>
-        <Checkbox type="checkbox" />
-        <Task>Do something</Task>
-        <Icons>
-          <Icon
-            onMouseDown={() =>
-              setAddorEdit(true, { type: "Edit", index: 0, value: "" })
-            }
-          >
-            <Edit />
-          </Icon>
-          <Icon>
-            <Delete />
-          </Icon>
-        </Icons>
-        <Line />
-      </TaskWrapper>
+      {tasks.map(({ id, title, completed }, index) => {
+        if (title.toLowerCase().includes(searchText.toLowerCase())) {
+          return (
+            <TaskWrapper>
+              <Checkbox
+                type="checkbox"
+                checked={completed === 1 ? true : false}
+                onMouseDown={() =>
+                  markReadUnRead({
+                    index,
+                    id,
+                    value: title,
+                    completed,
+                  })
+                }
+              />
+              <Task status={completed === 0 ? false : true}>{title}</Task>
+              <Icons>
+                <Icon
+                  onMouseDown={() =>
+                    setAddorEdit(true, {
+                      type: "Edit",
+                      index,
+                      id,
+                      value: title,
+                      completed,
+                    })
+                  }
+                >
+                  <Edit />
+                </Icon>
+                <Icon onMouseDown={() => deleteTask(index, id)}>
+                  <Delete />
+                </Icon>
+              </Icons>
+              <Line />
+            </TaskWrapper>
+          );
+        }
+      })}
     </>
   );
 };
