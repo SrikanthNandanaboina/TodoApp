@@ -13,6 +13,7 @@ const NavBar = (props) => {
   const email = localStorage.getItem("email");
 
   const handleLogout = () => {
+    console.log("logout");
     const { history } = props;
     localStorage.clear();
     history.push("/");
