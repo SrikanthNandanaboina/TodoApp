@@ -14,11 +14,11 @@ const TasksList = ({
       {tasks.map(({ id, title, completed }, index) => {
         if (title.toLowerCase().includes(searchText.toLowerCase())) {
           return (
-            <TaskWrapper>
+            <TaskWrapper key={id}>
               <Checkbox
                 type="checkbox"
                 checked={completed === 1 ? true : false}
-                onMouseDown={() =>
+                onChange={() =>
                   markReadUnRead({
                     index,
                     id,
@@ -49,7 +49,7 @@ const TasksList = ({
               <Line />
             </TaskWrapper>
           );
-        }
+        } else return null;
       })}
     </>
   );

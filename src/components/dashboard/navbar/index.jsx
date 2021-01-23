@@ -11,6 +11,7 @@ import {
 
 const NavBar = (props) => {
   const email = localStorage.getItem("email");
+
   const handleLogout = () => {
     console.log("logout");
     const { history } = props;
@@ -29,7 +30,7 @@ const NavBar = (props) => {
         </ProfileIcon>
         <Name>{email}</Name>
       </UserDataWrapper>
-      <Logout onMouseDown={() => handleLogout}>Logout</Logout>
+      <Logout onMouseDown={() => handleLogout()}>Logout</Logout>
     </NavbarWrapper>
   );
 };

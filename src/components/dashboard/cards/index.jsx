@@ -25,7 +25,7 @@ const Cards = ({ latestTasks, tasksInfo }) => {
           <Title>Latest Created Tasks</Title>
           <TasksWrapper>
             {latestTasks.map((task) => (
-              <Task status={task.completed === 0 ? false : true}>
+              <Task key={task.id} status={task.completed === 0 ? false : true}>
                 {task.title}
               </Task>
             ))}
