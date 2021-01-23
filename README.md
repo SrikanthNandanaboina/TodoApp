@@ -1,6 +1,6 @@
 # Todo App
 
-[Demo](https://todo-app-tdcx.herokuapp.com).
+Click here for [Demo](https://todo-app-tdcx.herokuapp.com).
 
 ## To run locally
 
