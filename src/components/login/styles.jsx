@@ -9,12 +9,23 @@ export const MainWrapper = styled.div`
 `;
 
 export const LoginCard = styled.div`
-  padding: 24px;
+  padding: 16px;
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+`;
+
+export const PopUpHeader = styled.div`
+  padding: 0 0 16px 0;
+  text-align: left;
+`;
+
+export const HeaderText = styled.span`
+  font-weight: 500;
+  color: #5c5d5f;
+  font-size: 20px;
 `;
 
 export const TextInput = styled.input`

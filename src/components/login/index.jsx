@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import { MainWrapper, LoginCard, TextInput, Button } from "../styles";
+import {
+  MainWrapper,
+  LoginCard,
+  TextInput,
+  Button,
+  PopUpHeader,
+  HeaderText,
+} from "./styles";
 import LoginController from "../../utilities/loginController";
 
 const Login = (props) => {
@@ -24,6 +31,9 @@ const Login = (props) => {
   return (
     <MainWrapper>
       <LoginCard>
+        <PopUpHeader>
+          <HeaderText>Login</HeaderText>
+        </PopUpHeader>
         <TextInput
           type="text"
           placeholder="Enter Email"
