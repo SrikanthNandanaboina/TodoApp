@@ -11,11 +11,11 @@ import {
 } from "./styles";
 
 const AddOrEditItem = ({ popUpType, togglePopUp, setAddorEdit }) => {
-  const { type, index, value } = popUpType;
+  const { type, index, value, id } = popUpType;
   const [taskName, setTaskName] = useState(value);
 
   const saveTask = () => {
-    togglePopUp({ type, taskName, index });
+    togglePopUp({ type, taskName, index, id });
   };
 
   return (

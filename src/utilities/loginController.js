@@ -3,7 +3,7 @@ import axios from "axios";
 class LoginController {
   constructor() {
     this.client = axios.create({
-      baseURL: process.env.BASE_URL,
+      baseURL: process.env.REACT_APP_BASE_URL,
     });
   }
 
@@ -13,4 +13,4 @@ class LoginController {
   };
 }
 
-export default LoginController;
+export default new LoginController(process.env.REACT_APP_BASE_URL);

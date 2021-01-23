@@ -32,4 +32,5 @@ export const Button = styled.span`
   padding: 12px 0;
   border-radius: 8px;
   color: #ffffff;
+  cursor: pointer;
 `;

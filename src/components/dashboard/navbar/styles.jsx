@@ -33,6 +33,7 @@ export const Logout = styled.span`
   font-size: 16px;
   font-weight: 500;
   color: #8b8d8e;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`

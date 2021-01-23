@@ -10,22 +10,25 @@ import {
   Count,
 } from "./styles";
 
-const Cards = () => {
+const Cards = ({ latestTasks, tasksInfo }) => {
   return (
     <MainWrapper>
       <CardsWrapper>
         <Card>
           <Title>Tasks Completed</Title>
           <Count>
-            5<Count isTotal>/ 20</Count>
+            {tasksInfo.completed}
+            <Count isTotal>/ {tasksInfo.completed + tasksInfo.pending}</Count>
           </Count>
         </Card>
         <Card>
           <Title>Latest Created Tasks</Title>
           <TasksWrapper>
-            <Task>wefjwnbhb bhfbhwbf</Task>
-            <Task>wefjwnbhb bhfbhwbf</Task>
-            <Task status>wefjwnbhb bhfbhwbf</Task>
+            {latestTasks.map((task) => (
+              <Task status={task.completed === 0 ? false : true}>
+                {task.title}
+              </Task>
+            ))}
           </TasksWrapper>
         </Card>
         <Card>
@@ -35,8 +38,8 @@ const Cards = () => {
             chartType="PieChart"
             data={[
               ["Tasks", "Completed"],
-              ["Pending", 2],
-              ["Done", 11],
+              ["Pending", tasksInfo.pending],
+              ["Done", tasksInfo.completed],
             ]}
             legendToggle
           />
